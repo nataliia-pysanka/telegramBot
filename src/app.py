@@ -1,13 +1,13 @@
 from flask import request, redirect, url_for, session, render_template
 from flask import Flask
 from flask_migrate import Migrate
+from db import db
 
 
 app = Flask(__name__)
 
 # db.init_app(app)
 # migrate = Migrate(app, db)
-
 
 
 @app.route('/', methods=['GET', 'POST'], strict_slashes=False)
@@ -42,8 +42,4 @@ def index():
 #     return render_template('pages/login.html')
 #
 #
-@app.route('/signin', methods=['GET', 'POST'], strict_slashes=False)
-def signin():
-    executor.start_polling(dp)
-
 
