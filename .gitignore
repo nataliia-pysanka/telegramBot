@@ -43,3 +43,4 @@ pytest-env
 # folders
 
 # files
+config.py
