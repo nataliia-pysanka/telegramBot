@@ -1,6 +1,22 @@
 version: "3.9"
 
 services:
+#  web:
+#      container_name: web-${APP_NAME}
+#      hostname: web-${APP_NAME}
+#      restart: always
+#      image: web-${APP_NAME}
+#      ports:
+#        - "5000:5000"
+#
+#      environment:
+#        - ./.env
+#      depends_on:
+#        db:
+#          condition: service_healthy
+#      build:
+#        dockerfile: Dockerfile
+#        context: .
 
   db:
       image: postgres:14.2

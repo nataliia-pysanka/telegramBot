@@ -9,13 +9,15 @@
             {% if user %}
                 <div class="container">
                 <b>
-                    <h1 class="name">{{ user }}</h1>
+                    <h3 class="name">{{ user.username }}</h3>
+                    <p class="name">{{ user.email }}</p>
                 </b>
-          {% else %}
-            <input class="modal__button" type="submit" value="SIGN IN" name="signin_input"/>
-            <input class="modal__button" type="submit" value="LOG IN" name="login_input" />
-          {% endif %}
-
+                </div>
+              {% else %}
+                <input class="modal__button" type="submit" value="SIGN IN" name="signin_input"/>
+                <input class="modal__button" type="submit" value="LOG IN" name="login_input" />
+              {% endif %}
+            {% endif %}
     </form>
     </div>
 
