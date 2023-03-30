@@ -1,11 +1,11 @@
 import asyncio
+import re
 from aiogram import Bot, Dispatcher, types, Router, F, html
 from aiogram.utils.markdown import text, bold, italic, code, pre
 from aiogram.filters import Command, CommandObject
+
 from config import TOKEN
-from aiogram.types import Message
-from datetime import datetime
-import re
+from repository import user_rep
 
 router = Router()
 
@@ -41,7 +41,7 @@ async def process_help_command(message: types.Message):
 
 
 @router.message(Command(commands=["username"]))
-async def process_start_command(message: types.Message,
+async def process_username_command(message: types.Message,
                                 command: CommandObject):
     if command.args:
         user['username'] = command.args
@@ -53,7 +53,7 @@ async def process_start_command(message: types.Message,
 
 
 @router.message(Command(commands=["email"]))
-async def process_start_command(message: types.Message,
+async def process_email_command(message: types.Message,
                                 command: CommandObject):
     email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
     if command.args:
@@ -68,7 +68,7 @@ async def process_start_command(message: types.Message,
 
 
 @router.message(Command(commands=["birth"]))
-async def process_start_command(message: types.Message,
+async def process_birth_command(message: types.Message,
                                 command: CommandObject):
     date_pattern = r'\b\d{1,2}-\d{1,2}-\d{4}\b'
     if command.args:
@@ -80,6 +80,12 @@ async def process_start_command(message: types.Message,
     else:
         await message.answer("Please input your birthday after the command "
                          "/birth in format day\-month\-year\!")
+
+
+@router.message(Command(commands=["registry"]))
+async def process_registry_command(message: types.Message):
+    await user_rep.create_user(user.get('email'), '123456')
+
 
 @router.message()
 async def echo_handler(message: types.Message) -> None:

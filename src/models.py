@@ -8,11 +8,9 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120), nullable=False)
     email = db.Column(db.String(120), nullable=False, unique=True)
-    # hash = db.Column(db.String(255), nullable=False)
-    # token_cookie = db.Column(db.String(255), nullable=True, default=None)
-    name = db.Column(db.String(120), nullable=False)
-    surname = db.Column(db.String(120), nullable=True)
     birth = db.Column(db.Date, nullable=True)
+    hash = db.Column(db.String(255), nullable=False)
+    token_cookie = db.Column(db.String(255), nullable=True, default=None)
 
     def __repr__(self):
         return f'User({self.username}, {self.email})'

@@ -3,7 +3,19 @@
 {% block content %}
     <div class="modal__background">
     <form method="post" action="/">
-        <a class="modal__button"href="https://t.me/TEB_Team_test_bot">REGISTRY</a>
+<!--        <a class="modal__button"href="https://t.me/TEB_Team_test_bot">REGISTRY</a>-->
+         {% if auth %}
+
+            {% if user %}
+                <div class="container">
+                <b>
+                    <h1 class="name">{{ user }}</h1>
+                </b>
+          {% else %}
+            <input class="modal__button" type="submit" value="SIGN IN" name="signin_input"/>
+            <input class="modal__button" type="submit" value="LOG IN" name="login_input" />
+          {% endif %}
+
     </form>
     </div>
 
